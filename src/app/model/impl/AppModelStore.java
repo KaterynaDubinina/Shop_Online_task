@@ -5,9 +5,8 @@ import app.model.AppModel;
 
 public class AppModelStore implements AppModel {
 
-    private static final double CONSTANT = 9.99;
     @Override
     public double calcPayment(Purchase purchase) {
-        return purchase.getQuantity() * CONSTANT;
+        return purchase.getQuantity() * purchase.getPrice();
     }
 }

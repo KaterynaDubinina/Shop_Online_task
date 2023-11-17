@@ -20,8 +20,9 @@ public class AppController {
         String output;
         AppModelStore model = new AppModelStore();
         String payment = Rounder.roundValue(model.calcPayment(purchase));
-        output = "\nПокупець:  " + buyer.getName() + "\n           " + buyer.getPhone() +
-                "\nДо сплати: " + payment + " " + CURRENCY +
+        output = "\nПокупець:   " + buyer.getName() + "\n            " + buyer.getPhone() +
+                "\nЗамовлення: " + purchase.getProductName() + ", " + purchase.getQuantity() + " шт." +
+                "\nДо сплати:  " + payment + " " + CURRENCY +
                 "\nЗабирай замовлення вже сьогодні в будь-якому з наших магазинів!";
         view.getOutput(output);
     }
@@ -35,19 +36,22 @@ public class AppController {
         String output;
         AppModelDelivery model = new AppModelDelivery();
         String payment = Rounder.roundValue(model.calcPayment(purchase));
-        output = "\nПокупець:  " + buyer.getName() + "\n           " + buyer.getPhone() + "\n           м. " +
+        output = "\nПокупець:   " + buyer.getName() + "\n            " + buyer.getPhone() + "\n            м. " +
                 address.getCity() + ", вул. " + address.getStreet() + ", буд. " + address.getHouse() +
-                "\nДо сплати: " + payment + " " + CURRENCY +
+                "\nЗамовлення: " + purchase.getProductName() + ", " + purchase.getQuantity() + " шт." +
+                "\nДо сплати:  " + payment + " " + CURRENCY +
                 "\nДякуємо за замовлення, очікуй на доставку!";
         view.getOutput(output);
     }
 
     private Purchase getPurchase(String[] data) {
-        return new Purchase(data[0], Integer.parseInt(data[1]));
+        return new Purchase(data[0], Integer.parseInt(data[1]), Double.parseDouble(data[2]));
     }
+
     private Buyer getBuyer(String[] data) {
-        return new Buyer(data[2], data[3]);
+        return new Buyer(data[3], data[4]);
     }
+
     private Address getAddress (String[] dataExtra) {
         return new Address(dataExtra[0], dataExtra[1], dataExtra[2]);
     }

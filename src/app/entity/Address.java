@@ -15,9 +15,11 @@ public class Address {
     public String getCity() {
         return city;
     }
+
     public String getStreet() {
         return street;
     }
+
     public String getHouse() {
         return house;
     }

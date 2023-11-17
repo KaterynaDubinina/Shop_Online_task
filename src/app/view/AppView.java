@@ -13,13 +13,16 @@ public class AppView {
         String productName = scanner.nextLine().trim();
         System.out.print("Введи кількість, шт: ");
         String quantity = scanner.nextLine().trim();
+        System.out.print("Введи вартість товару: ");
+        String productPrice = scanner.nextLine().trim();
         System.out.println("\n\uD83D\uDECD\uFE0F Супер, ми майже біля цілі \uD83D\uDECD\uFE0F\n");
         System.out.print("А тепер, введи своє ім'я: ");
         String buyerName = scanner.nextLine().trim();
         System.out.print("         введи свій номер телефону: ");
         String number = scanner.nextLine().trim();
-        return new String[]{productName, quantity, buyerName, number};
+        return new String[]{productName, quantity, productPrice, buyerName, number};
     }
+
     public String[] getExtraData() {
         System.out.print("\n         введи своє місто: ");
         String city = scanner.nextLine().trim();
@@ -30,7 +33,6 @@ public class AppView {
         scanner.close();
         return new String[]{city, street, house};
     }
-
 
     public void getOutput(String output) {
         System.out.println(output);

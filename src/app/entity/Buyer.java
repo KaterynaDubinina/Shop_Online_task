@@ -6,6 +6,7 @@ public class Buyer {
     private final String phone;
 
     public Buyer(String name, String phone) {
+
         this.name = name;
         this.phone = phone;
     }
